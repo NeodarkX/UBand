@@ -1,0 +1,29 @@
+﻿@model FACEBAND.WEB.ViewModel.Home.LoginViewModel
+
+@{
+    ViewBag.Title = "- Iniciar Sesión";
+    Layout = ConstantHelpers.Layout.LOGINLAYOUT_PATH;
+}
+
+<div class="container aside-xl">
+    <a class="navbar-brand block" href="index.html"><span class="h1 font-bold">FACEBAND</span></a>
+    <section class="m-b-lg">
+        <header class="wrapper text-center"> <strong>Ingresa tus datos</strong> </header>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(x => x.Codigo, new { @placeholder = "Email", @class = "form-control rounded input-lg text-center no-border", @type= "email" }) 
+            </div>
+            <div class="form-group"> 
+                @Html.TextBoxFor(x => x.Password, new { @placeholder = "Password", @class = "form-control rounded input-lg text-center no-border", @type = "password" })
+            </div>
+            
+            <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Ingresar</span></button>
+            <div class="text-center m-t m-b"><a href="#"><small>¿Olvidaste tu Contraseña?</small></a></div>
+            <div class="line line-dashed"></div>
+            <p class="text-muted text-center"><small>¿No tienes una cuenta?</small></p>
+            <a href="signup.html" class="btn btn-lg btn-info btn-block rounded">Regístrate Gratis</a>
+            <br/>
+        }
+    </section>
+</div>

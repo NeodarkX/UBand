@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="bg-info">
+
+<head>
+    <meta charset="utf-8" />
+    <title>FACEBAND @(ViewBag.Title != null ? @ViewBag.Title : "")</title>
+    <meta name="description" content="FACE BAND" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    @RazorHelpers.Style("js/jPlayer/jplayer.flat.css", Url)
+    @RazorHelpers.Style("css/app.v1.css", Url)
+    
+</head>
+<body class="bg-info">
+    <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
+        @RenderBody()
+    </section>
+    <br/><br /><br /><br /><br />
+    <!-- footer -->
+    <footer id="footer">
+        <div class="text-center padder">
+            <p> <small>Web app by Pedro, Harold y Joseph<br>&copy; @DateTime.Now.Year</small> </p>
+        </div>
+    </footer>
+    <!-- / footer --> <!-- Bootstrap --> <!-- App -->
+
+    @RazorHelpers.Content("js/app.v1.js",Url)
+    @RazorHelpers.Content("js/app.plugin.js", Url)
+    @RazorHelpers.Content("js/jPlayer/jquery.jplayer.min.js", Url)
+    @RazorHelpers.Content("js/jPlayer/add-on/jplayer.playlist.min.js", Url)
+    @RazorHelpers.Content("js/jPlayer/demo.js", Url)
+
+</body>
+
+</html>

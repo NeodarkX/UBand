@@ -1,0 +1,52 @@
+﻿@model FACEBAND.WEB.ViewModel.Band._AddUserBandViewModel
+
+@{
+    ViewBag.GUID = Guid.NewGuid().ToString();
+    Layout = ConstantHelpers.Layout.MODAL_LAYOUT_PATH;
+    ViewBag.Title = "Añadir Usuario";
+    ViewBag.ModalSize = "xs";
+}
+
+@Html.HiddenFor(x => x.BandaId)
+<div class="form-group"> <label>Mensaje</label> @Html.TextAreaFor(x => x.Mensaje, new { @placeholder = "Mensaje", @class = "form-control" }) </div>
+
+@if (Model.LstUsuario != null)
+{
+    <table class="table table-striped m-b-none">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th style="width:70px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.LstUsuario)
+            {
+                
+                @*var usu = item.UsuarioBanda.FirstOrDefault(x => x.UsuarioId == item.UsuarioId);
+                @if (usu != null || usu.Estado == ConstantHelpers.ESTADO_INACTIVO || usu.Rol == ConstantHelpers.ROL_ADMINISTRADOR) { continue; }*@
+                <tr>
+                    <td>
+                        <img src="@Url.Content(item.Foto)" class="img-circle" style="width:27%">
+                    </td>
+                    <td>@item.Nombres  @item.ApellidoPaterno  @item.ApellidoMaterno</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <a class="btn" href="@Url.Action("_AddUserBand", "Band", new { BandaId = Model.BandaId, usuarioId = item.UsuarioId })"  ><i class="fa fa-plus"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+@section Footer{
+
+    
+}
+
+

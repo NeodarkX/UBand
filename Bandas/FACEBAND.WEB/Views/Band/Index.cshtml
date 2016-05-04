@@ -1,0 +1,117 @@
+﻿@model FACEBAND.WEB.ViewModel.Band.BandViewModel
+
+@{
+    ViewBag.Section = "Bandas";
+}
+
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable">
+            <section class="hbox stretch">
+                <aside class="aside-lg bg-light lter b-r">
+                    <section class="vbox">
+                        <section class="scrollable">
+                            <div class="wrapper">
+                                <div class="text-center m-b m-t">
+                                    <a href="#" class="thumb-lg"> <img src="@Url.Content(Model.ObjBanda.Banda.Foto)" class="img-circle"> </a>
+                                    <div>
+                                        <div class="h3 m-t-xs m-b-xs">@Model.ObjBanda.Banda.Nombre</div>
+                                        @if(Model.ObjBanda.Banda.Ubicacion != null){<small class="text-muted"><i class="fa fa-map-marker"></i> @Model.ObjBanda.Banda.Ubicacion</small>}
+                                    </div>
+                                </div>
+                                <div class="panel wrapper">
+                                    <div class="row text-center">
+                                        <div class="col-xs-6"> <a href="#"> <span class="m-b-xs h4 block">@Model.ObjBanda.Banda.Seguidores</span> <small class="text-muted">Seguidores</small> </a> </div>
+                                        <div class="col-xs-6"> <span class="m-b-xs h4 block">@Model.LstUsuarioBanda.Count()</span> <small class="text-muted">Miembros</small></div>
+                                    </div>
+                                </div>
+                                @if (Model.ObjBanda.Rol == ConstantHelpers.ROL_ADMINISTRADOR)
+                                {
+                                    <div class="btn-group btn-group-justified m-b"> <a href="@Url.Action("EditBanda", "Band", new { bandaId = Model.ObjBanda.BandaId})" class="btn btn-success btn-rounded"> <span class="text"> <i class="fa fa-eye"></i> Editar </span> </a> </div>
+                                    
+                                }
+                                <div class="btn-group btn-group-justified m-b"> <a href="#" class="btn btn-danger btn-rounded"> <span class="text"> <i class="icon-arrow-left"></i> Salir de la Banda</span> </a> </div>
+                                <div>
+                                    <small class="text-uc text-xs text-muted">Puesto</small>
+                                    <p>@ConstantHelpers.TextoRol(Model.ObjBanda.Rol)</p>
+                                    <small class="text-uc text-xs text-muted">Descripción</small>
+                                    <p>@Model.ObjBanda.Banda.Descripcion</p>
+                                    <div class="line"></div>
+                                    <small class="text-uc text-xs text-muted">Redes Sociales</small>
+                                    <p class="m-t-sm"> <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a> <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a> </p>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </aside>
+                <aside class="bg-white">
+                    <section class="vbox">
+                        <header class="header bg-light lt">
+                            <ul class="nav nav-tabs nav-white">
+                                <li class="active"><a href="#muro" data-toggle="tab">Muro</a></li>
+                                <li class=""><a href="#miembros" data-toggle="tab">Miembros</a></li>
+                                <li class=""><a href="#ficha" data-toggle="tab">Ficha</a></li>
+                            </ul>
+                        </header>
+                        <section class="scrollable">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="muro">
+                                    <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                                        @foreach (var actividad in Model.LstActividad)
+                                        {
+                                            <li class="list-group-item"> <a href="#" class="thumb-sm pull-left m-r-sm"> <img src="@Url.Content((actividad.UsuEmisorId != null ? actividad.Usuario.Foto : actividad.Banda1.Foto))" class="img-circle"> </a> <a href="#" class="clear"> <small class="pull-right">@actividad.Fecha.ToShortDateString()</small> <strong class="block">@(actividad.UsuEmisorId != null ? actividad.Usuario.Nombres + " " + actividad.Usuario.ApellidoPaterno + " " + actividad.Usuario.ApellidoMaterno : actividad.Banda1.Nombre)</strong> <small>@actividad.Titulo </small> </a> </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" id="miembros">
+                                    <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                                        @foreach (var miembro in Model.LstUsuarioBanda)
+                                        {
+                                            <li class="list-group-item @(miembro.UsuarioId == Session.GetUsuarioId() ? "active" : "")"> <a href="#" class="thumb-sm pull-left m-r-sm"> <img src="@Url.Content(miembro.Usuario.Foto)" class="img-circle"> </a> <a href="#" class="clear">  <strong class="block">@miembro.Usuario.Nombres , @miembro.Usuario.ApellidoPaterno @miembro.Usuario.ApellidoMaterno</strong> <small>@ConstantHelpers.TextoRol(miembro.Rol)</small> </a> </li>
+                                        }
+                                    </ul> 
+                                </div>
+                                <div class="tab-pane" id="ficha">
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </aside>
+                <aside class="col-lg-3 b-l">
+                    <section class="vbox">
+                        <section class="scrollable padder-v">
+                            <div class="panel">
+                                <h4 class="font-thin padder">Mensajes <a @Data.ModalLink("_AddMensajeBanda", "Band", new  { BandaId = Model.ObjBanda.BandaId }) href="#"><i class="icon-plus text-right" style="float:right"></i></a></h4>
+                                <ul class="list-group">
+                                    @foreach (var mensaje in Model.LstMensajes)
+                                    {
+                                        <li class="list-group-item">
+                                            <p><a class="text-info">@mensaje.Usuario.Nombres @mensaje.Usuario.ApellidoPaterno : </a> @mensaje.Mensaje</p>
+                                            <small class="block text-muted"><i class="fa fa-clock-o"></i> @mensaje.Fecha.ToShortDateString()</small>
+                                        </li>
+                                    }
+                                    <li class="list-group-item">
+                                        <p style="text-align:center;margin:0px"><a href=" #" class="text-info" >Ver Todos</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel clearfix">
+                                <div class="panel-body">
+                                    <a href="#" class="thumb pull-left m-r"> <img src="@RazorHelpers.Content("images/m1.jpg",Url)" class="img-circle"> </a>
+                                    <div class="clear"> <a href="#" class="text-info"> Fotos y Videos &nbsp;&nbsp;&nbsp;<i class="fa fa-video-camera"></i></a> <small class="block text-muted"></small> <a href="#" class="btn btn-xs btn-success m-t-xs">Ver</a> </div>
+                                </div>
+                                <div class="panel-body">
+                                    <a href="#" class="thumb pull-left m-r"> <img src="@RazorHelpers.Content("images/m10.jpg",Url)" class="img-circle"> </a>
+                                    <div class="clear"> <a href="#" class="text-info"> Temas &nbsp;&nbsp;&nbsp; <i class="icon-music-tone-alt"></i></a> <small class="block text-muted"></small> <a href="#" class="btn btn-xs btn-success m-t-xs">Ver</a> </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </aside>
+            </section>
+        </section>
+    </section>
+    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+</section>

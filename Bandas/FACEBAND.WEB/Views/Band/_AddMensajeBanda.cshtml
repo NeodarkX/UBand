@@ -1,0 +1,17 @@
+﻿@model FACEBAND.WEB.ViewModel.Band._AddMensajeBandaViewModel
+
+@{
+    ViewBag.GUID = Guid.NewGuid().ToString();
+    ViewBag.Form = new ModalFormHelpers("_AddMensajeBanda", "Band", FormMethod.Post, new AjaxOptions() { UpdateTargetId = ViewBag.GUID });
+    Layout = ConstantHelpers.Layout.MODAL_LAYOUT_PATH;
+    ViewBag.Title = "Nuevo Mensaje";
+    ViewBag.ModalSize = "xs";
+}
+
+@Html.HiddenFor(x => x.BandaId)
+<div class="form-group"> <label>Mensaje</label> @Html.TextAreaFor(x => x.Mensaje, new  { @placeholder = "Mensaje", @class="form-control" , @required = "" }) </div>
+
+@section Footer{
+
+    <button type="submit" class="btn  btn-info">Enviar</button>
+}

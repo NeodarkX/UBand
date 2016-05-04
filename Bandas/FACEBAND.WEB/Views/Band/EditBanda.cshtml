@@ -1,0 +1,105 @@
+﻿@model FACEBAND.WEB.ViewModel.Band.EditBandaViewModel
+
+@{
+    ViewBag.Section = "Bandas";
+}
+
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable">
+            <section class="hbox stretch">
+                <aside class="aside-lg bg-light lter b-r">
+                    <section class="vbox">
+                        <section class="scrollable">
+                            <div class="wrapper">
+                                <div class="text-center m-b m-t">
+                                    <a href="#" class="thumb-lg"> <img src="@Url.Content(Model.ObjBanda.Banda.Foto)" class="img-circle"> </a>
+                                    <div>
+                                        <div class="h3 m-t-xs m-b-xs">@Model.ObjBanda.Banda.Nombre</div>
+                                        @if (Model.ObjBanda.Banda.Ubicacion != null)
+                                        {<small class="text-muted"><i class="fa fa-map-marker"></i> @Model.ObjBanda.Banda.Ubicacion</small>}
+                                    </div>
+                                </div>
+                                <div class="panel wrapper">
+                                    <div class="row text-center">
+                                        <div class="col-xs-6"> <a href="#"> <span class="m-b-xs h4 block">@Model.ObjBanda.Banda.Seguidores</span> <small class="text-muted">Seguidores</small> </a> </div>
+                                        <div class="col-xs-6"> <span class="m-b-xs h4 block">@Model.LstUsuarioBanda.Count()</span> <small class="text-muted">Miembros</small> </div>
+                                    </div>
+                                </div>
+
+                                <div class="btn-group btn-group-justified m-b"> <a href="@Url.Action("Index")" class="btn btn-dark btn-rounded"> <span class="text"> <i class="icon-arrow-left"></i> &nbsp;&nbsp;&nbsp; Volver </span> </a> </div>
+
+                            </div>
+                        </section>
+                    </section>
+                </aside>
+                <aside class="bg-white">
+                    <section class="vbox">
+                        <header class="header bg-light lt">
+                            <ul class="nav nav-tabs nav-white">
+                                <li class="active"><a href="#perfil" data-toggle="tab">Perfil de la Banda</a></li>
+                                <li class=""><a href="#miembros" data-toggle="tab">Miembros</a></li>
+                                <li class=""><a href="#ficha" data-toggle="tab">Ficha</a></li>
+                            </ul>
+                        </header>
+                        <section class="scrollable">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="perfil">
+                                    <div class="panel-body">
+                                        <form role="form" action="@Url.Action("EditBanda","Band")" method="post">
+                                            @Html.HiddenFor(x => x.BandaId)
+                                            <div class="form-group"> <label>Nombre</label> @Html.TextBoxFor(x => x.Nombre, new { @placeholder = "Nombre", @class = "form-control" }) </div>
+                                            <div class="form-group"> <label>Descripción</label> @Html.TextBoxFor(x => x.Descripcion, new { @placeholder = "Descripcion", @class = "form-control" }) </div> <br />
+                                            <div class="form-group"> <label>Foto de Perfil &nbsp;&nbsp;&nbsp;</label><input type="file" name="Foto" class="filestyle" data-icon="false" data-classbutton="btn btn-default" data-classinput="form-control inline v-middle input-s"></div> <br />
+                                            <div class="form-group"> 
+                                                <label>Géneros</label> &nbsp;&nbsp;&nbsp;
+                                                <select style="width:260px" name="LstSelect" multiple class="chosen-select">
+                                                    @foreach (var genero in Model.LstGenero)
+                                                    {
+                                                        <option value="@genero.GeneroId">@genero.Nombre</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <br />
+                                            <button type="submit" class="btn btn-info">Guardar</button>
+                                            
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="miembros">
+                                    <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                                        @foreach (var miembro in Model.LstUsuarioBanda)
+                                        {
+                                            <li class="list-group-item @(miembro.UsuarioId == Session.GetUsuarioId() ? "active" : "")"> 
+                                                <a href="#" class="thumb-sm pull-left m-r-sm"> 
+                                                    <img src="@Url.Content(miembro.Usuario.Foto)" class="img-circle"> 
+                                                </a> 
+                                                <a href="#">  
+                                                    <strong class="block">@miembro.Usuario.Nombres , @miembro.Usuario.ApellidoPaterno @miembro.Usuario.ApellidoMaterno</strong> 
+                                                    <small>@ConstantHelpers.TextoRol(miembro.Rol)</small> 
+                                                </a>
+                                                @if (Session.GetUsuarioId() != miembro.UsuarioId)
+                                                {
+                                                    <a href="@Url.Action("DeleteUserBand", "Band", new { usuarioId = miembro.UsuarioId })"><i class="icon-close" style="float:right"></i></a>
+                                                }
+                                                
+                                            </li>
+                                        }
+                                    </ul>
+                                    <br />
+                                    <div class="btn-group btn-group-justified m-b"> <a @Data.ModalLink("_AddUserBand", "Band", new { BandaId  = Model.BandaId}) class="btn btn-success btn-rounded"> <span class="text"> <i class="icon-plus"></i> &nbsp;&nbsp;&nbsp; Agregar Usuario </span> </a> </div>
+                                </div>
+                                <div class="tab-pane" id="ficha">
+
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </aside>
+                
+            </section>
+        </section>
+    </section>
+    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+</section>

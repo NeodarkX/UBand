@@ -1,0 +1,73 @@
+﻿<aside class="bg-black dk  aside hidden-print @(ViewBag.Collapse == true ? "nav-xs" : "")" id="nav">
+    <section class="vbox">
+        <section class="w-f-md scrollable">
+            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railopacity="0.2">
+                <!-- nav -->
+                <nav class="nav-primary hidden-xs">
+                    @switch (Session.GetRol())
+                    {
+                        case AppRol.Administrador:
+                            {
+                                <ul class="nav bg clearfix">
+                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted"> Opciones </li>
+                                    <li class="@(ViewBag.Section == "Bandas" ? "active" : "")"> <a href="index.html"> <i class="icon-disc icon text-success"></i> <span class="font-bold">Bandas</span> </a> </li>
+                                    <li class="@(ViewBag.Section == "Generos" ? "active" : "")"> <a href="genres.html"> <i class="icon-list icon text-info"></i> <span class="font-bold">Géneros</span> </a> </li>
+                                    <li class="@(ViewBag.Section == "Usuarios" ? "active" : "")"> <a href="events.html"> <i class="icon-user icon text-primary-lter"></i> <span class="font-bold">Usuarios</span> </a> </li>
+                                    <li class="@(ViewBag.Section == "Mensajes" ? "active" : "")"> <a href="listen.html"> <i class="icon-drawer icon text-danger-dk"></i> <span class="font-bold">Mensajes</span> </a> </li>
+                                    <li class="m-b hidden-nav-xs"></li>
+                                </ul>
+                                
+                        break;
+                        }
+                        case AppRol.Usuario:
+                        {
+                        <ul class="nav bg clearfix">
+                            <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted"> Opciones </li>
+                            <li class="@(ViewBag.Section == "Bandas" ? "active" : "")"> <a href="@Url.Action("Index","User")"> <i class="icon-disc icon text-success "></i> <span class="font-bold">Bandas</span> </a> </li>
+                            <li class="@(ViewBag.Section == "TopList" ? "active" : "")"> <a href="events.html"> <i class="icon-equalizer icon text-info"></i> @*<b class="badge bg-primary pull-right">6</b>*@ <span class="font-bold">Top List</span> </a> </li>
+                            <li class="@(ViewBag.Section == "Videos" ? "active" : "")"> <a href="listen.html"> <i class="icon-screen-desktop icon text-primary-lter"></i> <span class="font-bold">Videos</span> </a> </li>
+                            <li class="@(ViewBag.Section == "Dashboard" ? "active" : "")"> <a href="video.html" data-target="#content" data-el="#bjax-el" data-replace="true"> <i class="icon-social-youtube icon text-primary"></i> <span class="font-bold">Video</span> </a> </li>
+                            <li class="m-b hidden-nav-xs"></li>
+                        </ul>
+                        
+                        <ul class="nav" data-ride="collapse">
+                            @if (ViewBag.Section == "Bandas")
+                            {
+                                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted"> Opciones Extra</li>
+                                <li> <a href="@Url.Action("Index","Band")"> <i class="icon-music-tone icon"></i> <span>Mi Banda</span> </a> </li>
+                            }
+                        </ul>
+                        break;
+                        }
+                    }
+                </nav>
+                <!-- / nav -->
+            </div>
+        </section>
+        <footer class="footer hidden-xs no-padder text-center-nav-xs">
+            <div class="bg hidden-xs ">
+                <div class="dropdown dropup wrapper-sm clearfix">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-left m-l-xs">
+                            <img src="@Url.Content(@Session.GetFoto())" class="dker" alt="...">
+                            <i class="on b-black"></i>
+                        </span>
+                        <span class="hidden-nav-xs clear">
+                            <span class="block m-l">
+                                <strong class="font-bold text-lt">@Session.GetNombreCompleto()</strong> <b class="caret"></b>
+                            </span>
+                            <span class="text-muted text-xs block m-l">@(Session.GetRolCompleto() == ConstantHelpers.ROL_USUARIO ? "" : "Administrador")</span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight aside text-left">
+                        <li> <span class="arrow bottom hidden-nav-xs"></span> <a href="#">Opciones</a> </li>
+                        <li> <a href="profile.html">Perfil</a> </li>
+                        <li> <a href="#"> <span class="badge bg-danger pull-right">3</span> Notificaciones </a> </li>
+                        <li class="divider"></li>
+                        <li> <a href="modal.lockme.html" data-toggle="ajaxModal">Cerrar Sesión</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </section>
+</aside>
