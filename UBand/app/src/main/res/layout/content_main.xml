@@ -11,8 +11,10 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="pe.com.uband.uband.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:background="#4cb6cb">
-
+    android:scrollIndicators="none"
+    android:fillViewport="false"
+    android:id="@+id/scrollViewMain"
+    android:scrollbars="none">
 
     <LinearLayout
         android:orientation="vertical"
@@ -23,9 +25,9 @@
         android:paddingRight="24dp">
         <ImageView
             android:id="@+id/imageView"
-            android:src="@drawable/bandlogo"
+            android:src="@drawable/bandlogo3"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="130dp"
             android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
         <android.support.design.widget.TextInputLayout
@@ -37,7 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="Email" />
+                android:hint="Email"
+                android:backgroundTint="@color/background_floating_material_light"
+                android:textColor="@color/background_floating_material_light" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -48,7 +52,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Password"/>
+                android:hint="Password"
+                android:backgroundTint="@color/background_floating_material_light"
+                android:textColorHint="#ffffff"
+                android:textColorLink="#ffffff"
+                android:textColorHighlight="#ffffff" />
         </android.support.design.widget.TextInputLayout>
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login"
@@ -64,7 +72,8 @@
             android:layout_marginBottom="24dp"
             android:text="¿No tienes una cuenta? Create una"
             android:gravity="center"
-            android:textSize="16dip"/>
+            android:textSize="16dip"
+            android:textColor="@color/background_floating_material_light" />
     </LinearLayout>
 
 

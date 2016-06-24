@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="pe.com.uband.uband.SignUpActivity"
     tools:showIn="@layout/activity_sign_up"
-    android:background="@color/Background">
+    android:fillViewport="false">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -20,9 +20,9 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ImageView android:src="@drawable/bandlogo"
+        <ImageView android:src="@drawable/bandlogo3"
             android:layout_width="wrap_content"
-            android:layout_height="72dp"
+            android:layout_height="130dp"
             android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
 
@@ -36,7 +36,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:hint="Name" />
+                android:hint="Nombre"
+                android:textColor="#ffffff"
+                android:textColorHighlight="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textColorLink="#ffffff"
+                android:textIsSelectable="false" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Email Label -->
@@ -81,7 +86,8 @@
             android:layout_marginBottom="24dp"
             android:text="¿Tienes una cuenta? Logueate"
             android:gravity="center"
-            android:textSize="16dip"/>
+            android:textSize="16dip"
+            android:textColor="@color/background_floating_material_light" />
 
     </LinearLayout>
 

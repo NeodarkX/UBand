@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="pe.com.uband.uband.SignUpActivity">
+    tools:context="pe.com.uband.uband.SignUpActivity"
+    android:background="@drawable/back">
 
 
 

@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_item_1"
+            android:title="Bandas"
+            android:icon="@mipmap/ic_cd"
+            android:checked="true"/>
+
+        <item android:id="@+id/nav_item_2"
+            android:title="Top List"
+            android:icon="@mipmap/ic_equalizer"/>
+
+        <item android:id="@+id/nav_item_3"
+            android:title="Videos"
+            android:icon="@mipmap/ic_computer"/>
+
+    </group>
+</menu>
