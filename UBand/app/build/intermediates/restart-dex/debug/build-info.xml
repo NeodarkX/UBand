@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="19"
+    density="xxhdpi"
+    format="7"
+    timestamp="5973785905541" >
+
+    <task
+        name="javac"
+        duration="0" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="0" />
+    <task
+        name="verifier"
+        duration="0" />
+
+    <artifact
+        location="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/resources-debug.ap_"
+        type="RESOURCES" />
+
+    <build timestamp="5853623820427" >
+        <artifact
+            location="/home/harold/Escritorio/UBand/UBand/UBand/app/build/outputs/apk/app-debug.apk"
+            type="MAIN" />
+    </build>
+    <build timestamp="5973785905541" >
+        <artifact
+            location="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/resources-debug.ap_"
+            type="RESOURCES" />
+    </build>
+
+</instant-run>

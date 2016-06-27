@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_cd.png",
+        "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/src/main/res/mipmap-xxxhdpi/ic_cd.png"
+    },
+    {
+        "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_computer.png",
+        "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/src/main/res/mipmap-xxxhdpi/ic_computer.png"
+    },
+    {
+        "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
+        "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_equalizer.png",
+        "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/src/main/res/mipmap-xxxhdpi/ic_equalizer.png"
+    }
+]
