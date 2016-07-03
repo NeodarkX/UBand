@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87ce4257766843b8907d41d3728a750f" Name="Diagram1">
+        <EntityTypeShape EntityType="FacebandDBModel.Actividad" Width="1.5" PointX="8.25" PointY="5" />
+        <EntityTypeShape EntityType="FacebandDBModel.Banda" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="FacebandDBModel.Genero" Width="1.5" PointX="6" PointY="18.75" />
+        <EntityTypeShape EntityType="FacebandDBModel.GeneroBanda" Width="1.5" PointX="8.25" PointY="1.625" />
+        <EntityTypeShape EntityType="FacebandDBModel.MensajeBanda" Width="1.5" PointX="5.25" PointY="10.375" />
+        <EntityTypeShape EntityType="FacebandDBModel.Seguimiento" Width="1.5" PointX="5.25" PointY="6.375" />
+        <EntityTypeShape EntityType="FacebandDBModel.Solicitud" Width="1.5" PointX="8.25" PointY="10" />
+        <EntityTypeShape EntityType="FacebandDBModel.Token" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="FacebandDBModel.Usuario" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="FacebandDBModel.UsuarioBanda" Width="1.5" PointX="5.25" PointY="14.375" />
+        <AssociationConnector Association="FacebandDBModel.FK_Actividad_Banda" />
+        <AssociationConnector Association="FacebandDBModel.FK_Actividad_Banda1" />
+        <AssociationConnector Association="FacebandDBModel.FK_Actividad_Usuario" />
+        <AssociationConnector Association="FacebandDBModel.FK_Actividad_Usuario1" />
+        <AssociationConnector Association="FacebandDBModel.FK_GeneroBanda_Banda" />
+        <AssociationConnector Association="FacebandDBModel.FK_MensajeBanda_Banda" />
+        <AssociationConnector Association="FacebandDBModel.FK_Seguimiento_Banda" />
+        <AssociationConnector Association="FacebandDBModel.FK_Solicitud_Banda" />
+        <AssociationConnector Association="FacebandDBModel.FK_Solicitud_Banda1" />
+        <AssociationConnector Association="FacebandDBModel.FK_UsuarioBanda_Banda" />
+        <AssociationConnector Association="FacebandDBModel.FK_GeneroBanda_Genero" />
+        <AssociationConnector Association="FacebandDBModel.FK_MensajeBanda_Usuario" />
+        <AssociationConnector Association="FacebandDBModel.FK_Seguimiento_Usuario" />
+        <AssociationConnector Association="FacebandDBModel.FK_Seguimiento_Usuario1" />
+        <AssociationConnector Association="FacebandDBModel.FK_Solicitud_Usuario" />
+        <AssociationConnector Association="FacebandDBModel.FK_Solicitud_Usuario1" />
+        <AssociationConnector Association="FacebandDBModel.FK_Usuario_Token" />
+        <AssociationConnector Association="FacebandDBModel.FK_UsuarioBanda_Usuario" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

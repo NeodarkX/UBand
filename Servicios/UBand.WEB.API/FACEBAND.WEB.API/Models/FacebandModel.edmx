@@ -1,0 +1,1032 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FacebandDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="ActividadId" />
+          </Key>
+          <Property Name="ActividadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripción" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="UsuEmisorId" Type="int" />
+          <Property Name="UsuDestinatarioId" Type="int" />
+          <Property Name="BandaDestinatarioId" Type="int" />
+          <Property Name="BandaEmisorId" Type="int" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banda">
+          <Key>
+            <PropertyRef Name="BandaId" />
+          </Key>
+          <Property Name="BandaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="100" />
+          <Property Name="Seguidores" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="GeneroId" />
+          </Key>
+          <Property Name="GeneroId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeneroBanda">
+          <Key>
+            <PropertyRef Name="GeneroBandaId" />
+          </Key>
+          <Property Name="GeneroBandaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BandaId" Type="int" Nullable="false" />
+          <Property Name="GeneroId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MensajeBanda">
+          <Key>
+            <PropertyRef Name="BandaMensajeId" />
+          </Key>
+          <Property Name="BandaMensajeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="BandaId" Type="int" Nullable="false" />
+          <Property Name="Mensaje" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seguimiento">
+          <Key>
+            <PropertyRef Name="SeguimientoId" />
+          </Key>
+          <Property Name="SeguimientoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="BandaId" Type="int" />
+          <Property Name="UsuarioSeguirId" Type="int" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="Sigue" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Solicitud">
+          <Key>
+            <PropertyRef Name="SolicitudId" />
+          </Key>
+          <Property Name="SolicitudId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Texto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UsuarioEmisorId" Type="int" />
+          <Property Name="UsuarioReceptorId" Type="int" />
+          <Property Name="BandaEmisoraId" Type="int" />
+          <Property Name="BandaReceptoraId" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="TokenId" />
+          </Key>
+          <Property Name="TokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="FechaExpiracion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Salt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="60" />
+          <Property Name="TokenId" Type="int" />
+          <Property Name="Rol" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioBanda">
+          <Key>
+            <PropertyRef Name="UsuarioBandaId" />
+          </Key>
+          <Property Name="UsuarioBandaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="BandaId" Type="int" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="FechaEgreso" Type="datetime" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Actividad_Banda">
+          <End Role="Banda" Type="Self.Banda" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="BandaDestinatarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Banda1">
+          <End Role="Banda" Type="Self.Banda" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="BandaEmisorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="UsuEmisorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Usuario1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="UsuDestinatarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneroBanda_Banda">
+          <End Role="Banda" Type="Self.Banda" Multiplicity="1" />
+          <End Role="GeneroBanda" Type="Self.GeneroBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="GeneroBanda">
+              <PropertyRef Name="BandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneroBanda_Genero">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
+          <End Role="GeneroBanda" Type="Self.GeneroBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="GeneroId" />
+            </Principal>
+            <Dependent Role="GeneroBanda">
+              <PropertyRef Name="GeneroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MensajeBanda_Banda">
+          <End Role="Banda" Type="Self.Banda" Multiplicity="1" />
+          <End Role="MensajeBanda" Type="Self.MensajeBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="MensajeBanda">
+              <PropertyRef Name="BandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MensajeBanda_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="MensajeBanda" Type="Self.MensajeBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="MensajeBanda">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seguimiento_Banda">
+          <End Role="Banda" Type="Self.Banda" Multiplicity="0..1" />
+          <End Role="Seguimiento" Type="Self.Seguimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Seguimiento">
+              <PropertyRef Name="BandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seguimiento_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Seguimiento" Type="Self.Seguimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Seguimiento">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seguimiento_Usuario1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Seguimiento" Type="Self.Seguimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Seguimiento">
+              <PropertyRef Name="UsuarioSeguirId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Banda">
+          <End Role="Banda" Type="Self.Banda" Multiplicity="0..1" />
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="BandaEmisoraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Banda1">
+          <End Role="Banda" Type="Self.Banda" Multiplicity="0..1" />
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="BandaReceptoraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="UsuarioEmisorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Usuario1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="UsuarioReceptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Token">
+          <End Role="Token" Type="Self.Token" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Token">
+              <PropertyRef Name="TokenId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="TokenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioBanda_Banda">
+          <End Role="Banda" Type="Self.Banda" Multiplicity="1" />
+          <End Role="UsuarioBanda" Type="Self.UsuarioBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="UsuarioBanda">
+              <PropertyRef Name="BandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioBanda_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="UsuarioBanda" Type="Self.UsuarioBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="UsuarioBanda">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FacebandDBModelStoreContainer">
+          <EntitySet Name="Actividad" EntityType="Self.Actividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banda" EntityType="Self.Banda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneroBanda" EntityType="Self.GeneroBanda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MensajeBanda" EntityType="Self.MensajeBanda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seguimiento" EntityType="Self.Seguimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Solicitud" EntityType="Self.Solicitud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioBanda" EntityType="Self.UsuarioBanda" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Actividad_Banda" Association="Self.FK_Actividad_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Banda1" Association="Self.FK_Actividad_Banda1">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Usuario" Association="Self.FK_Actividad_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Usuario1" Association="Self.FK_Actividad_Usuario1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneroBanda_Banda" Association="Self.FK_GeneroBanda_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="GeneroBanda" EntitySet="GeneroBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneroBanda_Genero" Association="Self.FK_GeneroBanda_Genero">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="GeneroBanda" EntitySet="GeneroBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MensajeBanda_Banda" Association="Self.FK_MensajeBanda_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="MensajeBanda" EntitySet="MensajeBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MensajeBanda_Usuario" Association="Self.FK_MensajeBanda_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="MensajeBanda" EntitySet="MensajeBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seguimiento_Banda" Association="Self.FK_Seguimiento_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Seguimiento" EntitySet="Seguimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seguimiento_Usuario" Association="Self.FK_Seguimiento_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Seguimiento" EntitySet="Seguimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seguimiento_Usuario1" Association="Self.FK_Seguimiento_Usuario1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Seguimiento" EntitySet="Seguimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Banda" Association="Self.FK_Solicitud_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Banda1" Association="Self.FK_Solicitud_Banda1">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Usuario" Association="Self.FK_Solicitud_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Usuario1" Association="Self.FK_Solicitud_Usuario1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Token" Association="Self.FK_Usuario_Token">
+            <End Role="Token" EntitySet="Token" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioBanda_Banda" Association="Self.FK_UsuarioBanda_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="UsuarioBanda" EntitySet="UsuarioBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioBanda_Usuario" Association="Self.FK_UsuarioBanda_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioBanda" EntitySet="UsuarioBanda" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FacebandDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FacebandDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actividad" EntityType="FacebandDBModel.Actividad" />
+          <EntitySet Name="Banda" EntityType="FacebandDBModel.Banda" />
+          <EntitySet Name="Genero" EntityType="FacebandDBModel.Genero" />
+          <EntitySet Name="GeneroBanda" EntityType="FacebandDBModel.GeneroBanda" />
+          <EntitySet Name="MensajeBanda" EntityType="FacebandDBModel.MensajeBanda" />
+          <EntitySet Name="Seguimiento" EntityType="FacebandDBModel.Seguimiento" />
+          <EntitySet Name="Solicitud" EntityType="FacebandDBModel.Solicitud" />
+          <EntitySet Name="Token" EntityType="FacebandDBModel.Token" />
+          <EntitySet Name="Usuario" EntityType="FacebandDBModel.Usuario" />
+          <EntitySet Name="UsuarioBanda" EntityType="FacebandDBModel.UsuarioBanda" />
+          <AssociationSet Name="FK_Actividad_Banda" Association="FacebandDBModel.FK_Actividad_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Banda1" Association="FacebandDBModel.FK_Actividad_Banda1">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Usuario" Association="FacebandDBModel.FK_Actividad_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Usuario1" Association="FacebandDBModel.FK_Actividad_Usuario1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneroBanda_Banda" Association="FacebandDBModel.FK_GeneroBanda_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="GeneroBanda" EntitySet="GeneroBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MensajeBanda_Banda" Association="FacebandDBModel.FK_MensajeBanda_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="MensajeBanda" EntitySet="MensajeBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seguimiento_Banda" Association="FacebandDBModel.FK_Seguimiento_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Seguimiento" EntitySet="Seguimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Banda" Association="FacebandDBModel.FK_Solicitud_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Banda1" Association="FacebandDBModel.FK_Solicitud_Banda1">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioBanda_Banda" Association="FacebandDBModel.FK_UsuarioBanda_Banda">
+            <End Role="Banda" EntitySet="Banda" />
+            <End Role="UsuarioBanda" EntitySet="UsuarioBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneroBanda_Genero" Association="FacebandDBModel.FK_GeneroBanda_Genero">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="GeneroBanda" EntitySet="GeneroBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MensajeBanda_Usuario" Association="FacebandDBModel.FK_MensajeBanda_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="MensajeBanda" EntitySet="MensajeBanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seguimiento_Usuario" Association="FacebandDBModel.FK_Seguimiento_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Seguimiento" EntitySet="Seguimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seguimiento_Usuario1" Association="FacebandDBModel.FK_Seguimiento_Usuario1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Seguimiento" EntitySet="Seguimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Usuario" Association="FacebandDBModel.FK_Solicitud_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Usuario1" Association="FacebandDBModel.FK_Solicitud_Usuario1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Token" Association="FacebandDBModel.FK_Usuario_Token">
+            <End Role="Token" EntitySet="Token" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioBanda_Usuario" Association="FacebandDBModel.FK_UsuarioBanda_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioBanda" EntitySet="UsuarioBanda" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="ActividadId" />
+          </Key>
+          <Property Name="ActividadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripción" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="UsuEmisorId" Type="Int32" />
+          <Property Name="UsuDestinatarioId" Type="Int32" />
+          <Property Name="BandaDestinatarioId" Type="Int32" />
+          <Property Name="BandaEmisorId" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Banda" Relationship="FacebandDBModel.FK_Actividad_Banda" FromRole="Actividad" ToRole="Banda" />
+          <NavigationProperty Name="Banda1" Relationship="FacebandDBModel.FK_Actividad_Banda1" FromRole="Actividad" ToRole="Banda" />
+          <NavigationProperty Name="Usuario" Relationship="FacebandDBModel.FK_Actividad_Usuario" FromRole="Actividad" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="FacebandDBModel.FK_Actividad_Usuario1" FromRole="Actividad" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Banda">
+          <Key>
+            <PropertyRef Name="BandaId" />
+          </Key>
+          <Property Name="BandaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Foto" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Seguidores" Type="Int32" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Actividad" Relationship="FacebandDBModel.FK_Actividad_Banda" FromRole="Banda" ToRole="Actividad" />
+          <NavigationProperty Name="Actividad1" Relationship="FacebandDBModel.FK_Actividad_Banda1" FromRole="Banda" ToRole="Actividad" />
+          <NavigationProperty Name="GeneroBanda" Relationship="FacebandDBModel.FK_GeneroBanda_Banda" FromRole="Banda" ToRole="GeneroBanda" />
+          <NavigationProperty Name="MensajeBanda" Relationship="FacebandDBModel.FK_MensajeBanda_Banda" FromRole="Banda" ToRole="MensajeBanda" />
+          <NavigationProperty Name="Seguimiento" Relationship="FacebandDBModel.FK_Seguimiento_Banda" FromRole="Banda" ToRole="Seguimiento" />
+          <NavigationProperty Name="Solicitud" Relationship="FacebandDBModel.FK_Solicitud_Banda" FromRole="Banda" ToRole="Solicitud" />
+          <NavigationProperty Name="Solicitud1" Relationship="FacebandDBModel.FK_Solicitud_Banda1" FromRole="Banda" ToRole="Solicitud" />
+          <NavigationProperty Name="UsuarioBanda" Relationship="FacebandDBModel.FK_UsuarioBanda_Banda" FromRole="Banda" ToRole="UsuarioBanda" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="GeneroId" />
+          </Key>
+          <Property Name="GeneroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GeneroBanda" Relationship="FacebandDBModel.FK_GeneroBanda_Genero" FromRole="Genero" ToRole="GeneroBanda" />
+        </EntityType>
+        <EntityType Name="GeneroBanda">
+          <Key>
+            <PropertyRef Name="GeneroBandaId" />
+          </Key>
+          <Property Name="GeneroBandaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BandaId" Type="Int32" Nullable="false" />
+          <Property Name="GeneroId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Banda" Relationship="FacebandDBModel.FK_GeneroBanda_Banda" FromRole="GeneroBanda" ToRole="Banda" />
+          <NavigationProperty Name="Genero" Relationship="FacebandDBModel.FK_GeneroBanda_Genero" FromRole="GeneroBanda" ToRole="Genero" />
+        </EntityType>
+        <EntityType Name="MensajeBanda">
+          <Key>
+            <PropertyRef Name="BandaMensajeId" />
+          </Key>
+          <Property Name="BandaMensajeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="BandaId" Type="Int32" Nullable="false" />
+          <Property Name="Mensaje" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Banda" Relationship="FacebandDBModel.FK_MensajeBanda_Banda" FromRole="MensajeBanda" ToRole="Banda" />
+          <NavigationProperty Name="Usuario" Relationship="FacebandDBModel.FK_MensajeBanda_Usuario" FromRole="MensajeBanda" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Seguimiento">
+          <Key>
+            <PropertyRef Name="SeguimientoId" />
+          </Key>
+          <Property Name="SeguimientoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="BandaId" Type="Int32" />
+          <Property Name="UsuarioSeguirId" Type="Int32" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sigue" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Banda" Relationship="FacebandDBModel.FK_Seguimiento_Banda" FromRole="Seguimiento" ToRole="Banda" />
+          <NavigationProperty Name="Usuario" Relationship="FacebandDBModel.FK_Seguimiento_Usuario" FromRole="Seguimiento" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="FacebandDBModel.FK_Seguimiento_Usuario1" FromRole="Seguimiento" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Solicitud">
+          <Key>
+            <PropertyRef Name="SolicitudId" />
+          </Key>
+          <Property Name="SolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Texto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioEmisorId" Type="Int32" />
+          <Property Name="UsuarioReceptorId" Type="Int32" />
+          <Property Name="BandaEmisoraId" Type="Int32" />
+          <Property Name="BandaReceptoraId" Type="Int32" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Banda" Relationship="FacebandDBModel.FK_Solicitud_Banda" FromRole="Solicitud" ToRole="Banda" />
+          <NavigationProperty Name="Banda1" Relationship="FacebandDBModel.FK_Solicitud_Banda1" FromRole="Solicitud" ToRole="Banda" />
+          <NavigationProperty Name="Usuario" Relationship="FacebandDBModel.FK_Solicitud_Usuario" FromRole="Solicitud" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="FacebandDBModel.FK_Solicitud_Usuario1" FromRole="Solicitud" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="TokenId" />
+          </Key>
+          <Property Name="TokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaExpiracion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="FacebandDBModel.FK_Usuario_Token" FromRole="Token" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPaterno" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Foto" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="TokenId" Type="Int32" />
+          <Property Name="Rol" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Actividad" Relationship="FacebandDBModel.FK_Actividad_Usuario" FromRole="Usuario" ToRole="Actividad" />
+          <NavigationProperty Name="Actividad1" Relationship="FacebandDBModel.FK_Actividad_Usuario1" FromRole="Usuario" ToRole="Actividad" />
+          <NavigationProperty Name="MensajeBanda" Relationship="FacebandDBModel.FK_MensajeBanda_Usuario" FromRole="Usuario" ToRole="MensajeBanda" />
+          <NavigationProperty Name="Seguimiento" Relationship="FacebandDBModel.FK_Seguimiento_Usuario" FromRole="Usuario" ToRole="Seguimiento" />
+          <NavigationProperty Name="Seguimiento1" Relationship="FacebandDBModel.FK_Seguimiento_Usuario1" FromRole="Usuario" ToRole="Seguimiento" />
+          <NavigationProperty Name="Solicitud" Relationship="FacebandDBModel.FK_Solicitud_Usuario" FromRole="Usuario" ToRole="Solicitud" />
+          <NavigationProperty Name="Solicitud1" Relationship="FacebandDBModel.FK_Solicitud_Usuario1" FromRole="Usuario" ToRole="Solicitud" />
+          <NavigationProperty Name="Token" Relationship="FacebandDBModel.FK_Usuario_Token" FromRole="Usuario" ToRole="Token" />
+          <NavigationProperty Name="UsuarioBanda" Relationship="FacebandDBModel.FK_UsuarioBanda_Usuario" FromRole="Usuario" ToRole="UsuarioBanda" />
+        </EntityType>
+        <EntityType Name="UsuarioBanda">
+          <Key>
+            <PropertyRef Name="UsuarioBandaId" />
+          </Key>
+          <Property Name="UsuarioBandaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="BandaId" Type="Int32" Nullable="false" />
+          <Property Name="Rol" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaEgreso" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Banda" Relationship="FacebandDBModel.FK_UsuarioBanda_Banda" FromRole="UsuarioBanda" ToRole="Banda" />
+          <NavigationProperty Name="Usuario" Relationship="FacebandDBModel.FK_UsuarioBanda_Usuario" FromRole="UsuarioBanda" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_Actividad_Banda">
+          <End Type="FacebandDBModel.Banda" Role="Banda" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Actividad" Role="Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="BandaDestinatarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Banda1">
+          <End Type="FacebandDBModel.Banda" Role="Banda" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Actividad" Role="Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="BandaEmisorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Usuario">
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Actividad" Role="Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="UsuEmisorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Usuario1">
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Actividad" Role="Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="UsuDestinatarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneroBanda_Banda">
+          <End Type="FacebandDBModel.Banda" Role="Banda" Multiplicity="1" />
+          <End Type="FacebandDBModel.GeneroBanda" Role="GeneroBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="GeneroBanda">
+              <PropertyRef Name="BandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MensajeBanda_Banda">
+          <End Type="FacebandDBModel.Banda" Role="Banda" Multiplicity="1" />
+          <End Type="FacebandDBModel.MensajeBanda" Role="MensajeBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="MensajeBanda">
+              <PropertyRef Name="BandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seguimiento_Banda">
+          <End Type="FacebandDBModel.Banda" Role="Banda" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Seguimiento" Role="Seguimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Seguimiento">
+              <PropertyRef Name="BandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Banda">
+          <End Type="FacebandDBModel.Banda" Role="Banda" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Solicitud" Role="Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="BandaEmisoraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Banda1">
+          <End Type="FacebandDBModel.Banda" Role="Banda" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Solicitud" Role="Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="BandaReceptoraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioBanda_Banda">
+          <End Type="FacebandDBModel.Banda" Role="Banda" Multiplicity="1" />
+          <End Type="FacebandDBModel.UsuarioBanda" Role="UsuarioBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banda">
+              <PropertyRef Name="BandaId" />
+            </Principal>
+            <Dependent Role="UsuarioBanda">
+              <PropertyRef Name="BandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneroBanda_Genero">
+          <End Type="FacebandDBModel.Genero" Role="Genero" Multiplicity="1" />
+          <End Type="FacebandDBModel.GeneroBanda" Role="GeneroBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="GeneroId" />
+            </Principal>
+            <Dependent Role="GeneroBanda">
+              <PropertyRef Name="GeneroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MensajeBanda_Usuario">
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="FacebandDBModel.MensajeBanda" Role="MensajeBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="MensajeBanda">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seguimiento_Usuario">
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="FacebandDBModel.Seguimiento" Role="Seguimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Seguimiento">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seguimiento_Usuario1">
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Seguimiento" Role="Seguimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Seguimiento">
+              <PropertyRef Name="UsuarioSeguirId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Usuario">
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Solicitud" Role="Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="UsuarioEmisorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Usuario1">
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Solicitud" Role="Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="UsuarioReceptorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Token">
+          <End Type="FacebandDBModel.Token" Role="Token" Multiplicity="0..1" />
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Token">
+              <PropertyRef Name="TokenId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="TokenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioBanda_Usuario">
+          <End Type="FacebandDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="FacebandDBModel.UsuarioBanda" Role="UsuarioBanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="UsuarioBanda">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FacebandDBModelStoreContainer" CdmEntityContainer="FacebandDBEntities">
+          <EntitySetMapping Name="Actividad">
+            <EntityTypeMapping TypeName="FacebandDBModel.Actividad">
+              <MappingFragment StoreEntitySet="Actividad">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="BandaEmisorId" ColumnName="BandaEmisorId" />
+                <ScalarProperty Name="BandaDestinatarioId" ColumnName="BandaDestinatarioId" />
+                <ScalarProperty Name="UsuDestinatarioId" ColumnName="UsuDestinatarioId" />
+                <ScalarProperty Name="UsuEmisorId" ColumnName="UsuEmisorId" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banda">
+            <EntityTypeMapping TypeName="FacebandDBModel.Banda">
+              <MappingFragment StoreEntitySet="Banda">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Seguidores" ColumnName="Seguidores" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="BandaId" ColumnName="BandaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genero">
+            <EntityTypeMapping TypeName="FacebandDBModel.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="GeneroId" ColumnName="GeneroId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneroBanda">
+            <EntityTypeMapping TypeName="FacebandDBModel.GeneroBanda">
+              <MappingFragment StoreEntitySet="GeneroBanda">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="GeneroId" ColumnName="GeneroId" />
+                <ScalarProperty Name="BandaId" ColumnName="BandaId" />
+                <ScalarProperty Name="GeneroBandaId" ColumnName="GeneroBandaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MensajeBanda">
+            <EntityTypeMapping TypeName="FacebandDBModel.MensajeBanda">
+              <MappingFragment StoreEntitySet="MensajeBanda">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="BandaId" ColumnName="BandaId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="BandaMensajeId" ColumnName="BandaMensajeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seguimiento">
+            <EntityTypeMapping TypeName="FacebandDBModel.Seguimiento">
+              <MappingFragment StoreEntitySet="Seguimiento">
+                <ScalarProperty Name="Sigue" ColumnName="Sigue" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioSeguirId" ColumnName="UsuarioSeguirId" />
+                <ScalarProperty Name="BandaId" ColumnName="BandaId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="SeguimientoId" ColumnName="SeguimientoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Solicitud">
+            <EntityTypeMapping TypeName="FacebandDBModel.Solicitud">
+              <MappingFragment StoreEntitySet="Solicitud">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="BandaReceptoraId" ColumnName="BandaReceptoraId" />
+                <ScalarProperty Name="BandaEmisoraId" ColumnName="BandaEmisoraId" />
+                <ScalarProperty Name="UsuarioReceptorId" ColumnName="UsuarioReceptorId" />
+                <ScalarProperty Name="UsuarioEmisorId" ColumnName="UsuarioEmisorId" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Token">
+            <EntityTypeMapping TypeName="FacebandDBModel.Token">
+              <MappingFragment StoreEntitySet="Token">
+                <ScalarProperty Name="FechaExpiracion" ColumnName="FechaExpiracion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="FacebandDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioBanda">
+            <EntityTypeMapping TypeName="FacebandDBModel.UsuarioBanda">
+              <MappingFragment StoreEntitySet="UsuarioBanda">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaEgreso" ColumnName="FechaEgreso" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="BandaId" ColumnName="BandaId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="UsuarioBandaId" ColumnName="UsuarioBandaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
