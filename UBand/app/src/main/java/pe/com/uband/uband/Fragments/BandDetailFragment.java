@@ -3,7 +3,6 @@ package pe.com.uband.uband.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 import pe.com.uband.uband.R;
 import pe.com.uband.uband.Tabs.PerfilTabFragment;
 
-public class BandDetailFragment extends Fragment {
+public class BandDetailFragment extends BaseVolleyFragment {
     private FragmentTabHost tabHost;
 
     public BandDetailFragment() {
@@ -20,9 +19,11 @@ public class BandDetailFragment extends Fragment {
     }
 
 
-    public static BandDetailFragment newInstance(String param1, String param2) {
+    public static BandDetailFragment newInstance(Integer param1) {
         BandDetailFragment fragment = new BandDetailFragment();
         Bundle args = new Bundle();
+        args.putInt("bandid",param1);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -40,7 +41,9 @@ public class BandDetailFragment extends Fragment {
         tabHost = (FragmentTabHost) rootView.findViewById(R.id.tabhost);
         tabHost.setup(getActivity(),getChildFragmentManager(),R.id.tabcontent);
 
-        tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("Perfil"), PerfilTabFragment.class,null);
+        Bundle bundle=new Bundle();
+        bundle.putInt("bandid",getArguments().getInt("bandid"));
+        tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("Perfil"), PerfilTabFragment.class,bundle);
 
         return rootView;
     }

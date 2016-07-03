@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:2:1-30:12
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:2:1-40:12
 	xmlns:android
 		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:2:11-69
 	package
@@ -13,8 +13,16 @@ ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifes
 	android:versionCode
 		INJECTED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml
 		INJECTED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.WRITE_INTERNAL_STORAGE
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:6:22-78
 application
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:5:5-28:19
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:8:5-38:19
 MERGED from [com.android.support:appcompat-v7:23.4.0] /home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] /home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] /home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/AndroidManifest.xml:7:5-20
@@ -37,55 +45,57 @@ MERGED from [de.hdodenhof:circleimageview:2.0.0] /home/harold/Escritorio/UBand/U
 MERGED from [com.android.support:cardview-v7:23.0.1] /home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 	android:supportsRtl
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:9:9-35
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:13:9-35
 	android:label
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:11:9-41
 	android:allowBackup
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:6:9-35
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:9:9-35
 	android:icon
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:7:9-43
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:10:9-43
 	android:theme
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:10:9-40
-uses-permission#android.permission.INTERNET
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:11:9-71
-	android:name
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:11:26-68
-uses-permission#android.permission.WRITE_INTERNAL_STORAGE
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:12:9-85
-	android:name
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:12:26-82
-activity#pe.com.uband.uband.Activities.MainActivity
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:13:9-22:20
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:14:9-40
+	android:largeHeap
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:12:9-33
+activity#pe.com.uband.uband.Activities.SplashActivity
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:15:9-24:20
 	android:label
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:15:13-45
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:17:13-45
 	android:theme
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:16:13-56
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:18:13-56
 	android:name
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:14:13-52
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:16:13-54
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:17:13-21:29
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:19:13-23:29
 action#android.intent.action.MAIN
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:18:17-69
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:18:25-66
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:20:17-77
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:22:17-77
 	android:name
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:20:27-74
-activity#pe.com.uband.uband.Activities.SignUpActivity
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:23:9-26:59
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:22:27-74
+activity#pe.com.uband.uband.Activities.MainActivity
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:25:9-28:59
 	android:label
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:25:13-59
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:27:13-59
 	android:theme
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:26:13-56
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:28:13-56
 	android:name
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:24:13-54
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:26:13-52
+activity#pe.com.uband.uband.Activities.SignUpActivity
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:29:9-32:59
+	android:label
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:31:13-59
+	android:theme
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:32:13-56
+	android:name
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:30:13-54
 activity#pe.com.uband.uband.Activities.PrincipalActivity
-ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:27:9-119
+ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:33:9-37:20
 	android:theme
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:27:64-107
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:35:13-56
 	android:name
-		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:27:19-63
+		ADDED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml:34:13-57
 uses-sdk
 INJECTED from /home/harold/Escritorio/UBand/UBand/UBand/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.4.0] /home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/AndroidManifest.xml:21:5-23:78

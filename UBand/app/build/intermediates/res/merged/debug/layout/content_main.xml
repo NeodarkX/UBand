@@ -41,7 +41,11 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:hint="Email"
-                android:backgroundTint="@color/background_floating_material_light" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textColorLink="@color/white"
+                android:textColorHighlight="@color/white"
+                android:backgroundTint="@color/white" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -53,10 +57,11 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:hint="Password"
-                android:backgroundTint="@color/background_floating_material_light"
-                android:textColorHint="#ffffff"
-                android:textColorLink="#ffffff"
-                android:textColorHighlight="#ffffff" />
+                android:backgroundTint="@color/white"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textColorLink="@color/white"
+                android:textColorHighlight="@color/white" />
         </android.support.design.widget.TextInputLayout>
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login"
@@ -73,7 +78,7 @@
             android:text="Registrate gratis"
             android:gravity="center"
             android:textSize="16dip"
-            android:textColor="@color/background_floating_material_light" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 

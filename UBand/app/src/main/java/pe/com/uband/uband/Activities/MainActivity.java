@@ -3,7 +3,6 @@ package pe.com.uband.uband.Activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -12,13 +11,27 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import Models.SessionManager;
+import Models.User;
 import pe.com.uband.uband.R;
 
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends BaseVolleyActivity {
     private static final String TAG = "MainActivity";
     private static final int REQUEST_SIGNUP = 0;
+    SessionManager session;
     EditText _emailText;
     EditText _passwordText;
     Button _loginButton;
@@ -27,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         _emailText = (EditText) findViewById(R.id.input_email);
         _passwordText = (EditText) findViewById(R.id.input_password);
@@ -35,23 +49,73 @@ public class MainActivity extends AppCompatActivity {
         _scwMain = (ScrollView) findViewById(R.id.scrollViewMain);
         _scwMain.setVerticalScrollBarEnabled(false);
         _scwMain.setHorizontalScrollBarEnabled(false);
+        session = new SessionManager(getApplicationContext());
         _loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //login();
-                startActivity(new Intent(MainActivity.this, PrincipalActivity.class));
+                login();
             }
         });
 
         _signupText.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
-                startActivityForResult(intent,REQUEST_SIGNUP);
+                if(!_emailText.getText().toString().isEmpty()) {
+                    Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                    startActivityForResult(intent, REQUEST_SIGNUP);
+                }
             }
         });
 
 
+    }
+
+    public String parse(String jsonLine) {
+        JsonElement jelement = new JsonParser().parse(jsonLine);
+        JsonObject jobject = jelement.getAsJsonObject();
+        jobject = jobject.getAsJsonObject("results");
+        String result = jobject.toString();
+        return result;
+    }
+
+    private void makeRequest(String user,String pass){
+        String url = "http://facebandapi.azurewebsites.net/api/authentication/login";
+        final String userfinal = user;
+        final String passfinal = pass;
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        Gson gson = new Gson();
+                        response = parse(response);
+                        User user = gson.fromJson(response,User.class);
+                        session.createUserLoginSession(user.getNombres(),user.getCodigo(),user.getFoto());
+
+                        startActivity(new Intent(MainActivity.this, PrincipalActivity.class));
+                        onConnectionFinished();
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        onConnectionFailed(error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("user", userfinal);
+                params.put("pass",passfinal);
+
+                return params;
+            }
+        };
+
+        addToQueue(postRequest);
     }
 
     public void login(){
@@ -68,8 +132,11 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("Autenticando...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        final String email = _emailText.getText().toString();
+        final String password = _passwordText.getText().toString();
+
+
+        makeRequest(email,password);
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -80,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 },3000
         );
+
     }
 
     @Override

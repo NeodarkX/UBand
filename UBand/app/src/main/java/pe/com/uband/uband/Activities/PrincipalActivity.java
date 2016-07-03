@@ -13,8 +13,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+
+import Models.SessionManager;
 import pe.com.uband.uband.Fragments.HomeFragment;
 import pe.com.uband.uband.R;
 
@@ -24,12 +32,18 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private int selectedItem;
+    private SessionManager session;
     Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
+        session = new SessionManager(getApplicationContext());
+        if(session.checkLogin())
+            finish();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -39,13 +53,19 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
+        View hView =  navDrawer.getHeaderView(0);
+        HashMap<String, String> user = session.getUserDetails();
+        TextView nav_user = (TextView)hView.findViewById(R.id.textViewName);
+        nav_user.setText(user.get(SessionManager.KEY_NAME));
+        ImageView iv = (ImageView) hView.findViewById(R.id.imageView);
+        String image = user.get(SessionManager.KEY_IMAGE);
+        image = image.substring(1,image.length());
+
+        Picasso.with(PrincipalActivity.this).load("http://faceband.azurewebsites.net"+image).into(iv);
         selectedItem = savedInstanceState == null ? R.id.nav_item_1 : savedInstanceState.getInt("selectedItem");
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        HomeFragment hello = new HomeFragment();
-        fragmentTransaction.add(R.id.fragment, hello);
-        fragmentTransaction.commit();
+        FirstFragmentView(true);
+
     }
 
     @Override
@@ -55,13 +75,10 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
 
         switch (selectedItem) {
             case R.id.nav_item_1:
-                Toast.makeText(this, "Bandas!", Toast.LENGTH_SHORT).show();
+                FirstFragmentView(false);
                 break;
-            case R.id.nav_item_2:
-                Toast.makeText(this, "TopList!", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_item_3:
-                Toast.makeText(this, "Videos!", Toast.LENGTH_SHORT).show();
+            case R.id.nav_item_4:
+                session.logoutUser();
                 break;
         }
 
@@ -69,6 +86,20 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
 
         return true;
     }
+
+    public void FirstFragmentView(boolean first){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        HomeFragment hello = new HomeFragment();
+        hello.newInstance(SessionManager.KEY_NAME,SessionManager.KEY_EMAIL);
+        if(first)
+            fragmentTransaction.add(R.id.fragment, hello);
+        else
+
+            fragmentTransaction.replace(R.id.fragment, hello);
+        fragmentTransaction.commit();
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -91,4 +122,5 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         Toast toast = Toast.makeText(this, "Wheeee!",Toast.LENGTH_SHORT);
         toast.show();
     }
+
 }

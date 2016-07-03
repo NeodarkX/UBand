@@ -8,7 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import pe.com.uband.uband.R;
@@ -17,15 +18,17 @@ import pe.com.uband.uband.R;
  * Created by root on 19/06/16.
  */
 public class GridImageAdapter extends BaseAdapter {
-    private final List<Item> mItems = new ArrayList<Item>();
-    private final LayoutInflater mInflater;
+    private  List<Item> mItems;
+    private  LayoutInflater mInflater;
+    private Context context;
 
-    public GridImageAdapter(Context context){
+    public GridImageAdapter(Context context,List<Item> mItems){
+        this.context=context;
         mInflater = LayoutInflater.from(context);
-        exampleAdd();
+        this.mItems=mItems;
     }
 
-    public void exampleAdd(){
+    /*public void exampleAdd(){
         mItems.add(new Item("Pop", R.drawable.pop));
 
         mItems.add(new Item("Rock",R.drawable.rock));
@@ -35,7 +38,7 @@ public class GridImageAdapter extends BaseAdapter {
         mItems.add(new Item("Rock",R.drawable.rock));
 
         mItems.add(new Item("Rock",R.drawable.rock));
-    }
+    }*/
 
 
     @Override
@@ -44,13 +47,13 @@ public class GridImageAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Item getItem(int position) {
         return mItems.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return mItems.get(position).drawableId;
+        return mItems.get(position).id;
     }
 
     @Override
@@ -70,19 +73,69 @@ public class GridImageAdapter extends BaseAdapter {
 
         Item item = (Item) getItem(i);
 
-        picture.setImageResource(item.drawableId);
-        name.setText(item.name);
+        Picasso.with(context).load("http://faceband.azurewebsites.net"+getItem(i).getFoto()).into(picture);
+        //picture.setImageResource(item.drawableId);
+        name.setText(item.nombre);
 
         return v;
     }
 
-    private static class Item {
-        public final String name;
-        public final int drawableId;
+    public static class Item {
+        private Integer id;
+        private String nombre;
+        private String descripcion;
+        private String foto;
+        private Integer seguidores;
 
-        Item(String name, int drawableId) {
-            this.name = name;
-            this.drawableId = drawableId;
+        public Item() {
+        }
+
+        public Item(Integer id, String nombre, String foto, String descripcion, Integer seguidores) {
+            this.id = id;
+            this.nombre = nombre;
+            this.foto = foto;
+            this.descripcion = descripcion;
+            this.seguidores = seguidores;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getDescripcion() {
+            return descripcion;
+        }
+
+        public void setDescripcion(String descripcion) {
+            this.descripcion = descripcion;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public Integer getSeguidores() {
+            return seguidores;
+        }
+
+        public void setSeguidores(Integer seguidores) {
+            this.seguidores = seguidores;
+        }
+
+        public String getFoto() {
+            return foto;
+        }
+
+        public void setFoto(String foto) {
+            this.foto = foto;
         }
     }
 }

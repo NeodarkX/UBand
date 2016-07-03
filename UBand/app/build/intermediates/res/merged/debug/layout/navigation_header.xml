@@ -5,17 +5,22 @@
     android:background="#242c30"
     android:orientation="vertical">
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageView"
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"
-        android:src="@drawable/user"
+        android:src="@drawable/pop"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imageView2" />
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="4dp"/>
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -23,8 +28,8 @@
         android:text="Harold Castro"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffffff"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="6dp" />
 
 X|</RelativeLayout>

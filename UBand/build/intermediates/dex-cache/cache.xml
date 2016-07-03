@@ -1,2 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.19/a8f23f65fc1e522ee4a1a697ee569901a46741fa/library-1.0.19.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/library-1.0.19_87c239e70294a00e0380c13aeb73b09582920674.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.4.0_b3c881dd0383209fc450609a6d5a775df75a0aad.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0_e5eb2d566ca431f7102bd810b0c82964f6772dcd.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.4.0_14a58fed679273a182c8a560a9e30d0802ce2814.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.0.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="74ca46e7da11e3d065eb64cdbe6568a7ed74c211">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/com.jakewharton-butterknife-8.0.1_0ac999b3d6298dbad814a44dee71c8fea6fcf2c4.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.4.0_c18b1bd553939b09a19087b4d5a4976895eca7a9.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.4.0_6020e74381dc814438959e41174d58dab15a214c.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.4.0_4940eca97a1bbc54b7a7a9cb677c22b104711387.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.4.0_e13cfd5c908f5fff8d38875c588cc2a8f2741026.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a25f4cc4bb15249e613718a8253a50c5a891e6d0">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_b4e104056e7cc569769e96395730f704b1040827.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/picasso-2.5.2_f07471cc8daabba9b33b6c2492a169834e3c6749.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="965df2b5d59eab0bfea3ed21ac3a8933013780e3">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/instant-run_62c704464f442624cf82ba94870b581d12a0c9cc.jar" />
+    </item>
+    <item
+        jar="/home/harold/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_d7df8fde0c1e45bed4a1781f8857450b9ed97fd3.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/de.hdodenhof-circleimageview-2.0.0_f9fd47e2d8c01f072c8c18c35d3ca4da8c698004.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.4/695b63d702f505b9b916e02272e3b6381bade7f/gson-2.4.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/gson-2.4_9997a89e2f6a8966d3838b74a4f24a5486ba5fc7.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.0.1/345b89f45d02d8b09400b472fab7b7e38f4ede1f/butterknife-annotations-8.0.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="345b89f45d02d8b09400b472fab7b7e38f4ede1f">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/butterknife-annotations-8.0.1_428f480bd717ee871d37214f00858106de42f9ff.jar" />
+    </item>
+    <item
+        jar="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="39ae02ce40c3ac828abbf780ce0ff5d7a28b7d6a">
+        <dex dex="/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.0.1_296bb5a1ce2c8f2660d23253677c8e4c039e4412.jar" />
+    </item>
+
+</items>

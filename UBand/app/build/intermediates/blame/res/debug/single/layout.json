@@ -20,6 +20,10 @@
         "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_bar_title_item.xml"
     },
     {
+        "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/layout/cardview_item.xml",
+        "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/src/main/res/layout/cardview_item.xml"
+    },
+    {
         "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
         "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_mode_close_item_material.xml"
     },
@@ -70,6 +74,10 @@
     {
         "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
         "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/layout/activity_splash.xml",
+        "source": "/home/harold/Escritorio/UBand/UBand/UBand/app/src/main/res/layout/activity_splash.xml"
     },
     {
         "merged": "/home/harold/Escritorio/UBand/UBand/UBand/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
